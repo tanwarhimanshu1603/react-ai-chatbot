@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Messages from "../components/Messages";
 import Loader from "../components/Loader";
-import OpenAIAPIKEY from '../openaiApiKey'
+// import OpenAIAPIKEY from '../openaiApiKey'
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -54,7 +54,8 @@ const Chat = () => {
     await fetch("https://api.openai.com/v1/chat/completions",{
         method: "POST",
         headers: {
-            "Authorization": `Bearer ${OpenAIAPIKEY}` ,
+            "Authorization": `Bearer ` ,
+            // "Authorization": `Bearer ${OpenAIAPIKEY ? OpenAIAPIKEY : ''}` ,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
