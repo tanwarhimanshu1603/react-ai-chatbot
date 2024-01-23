@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Messages from "../components/Messages";
 import Loader from "../components/Loader";
+import OpenAIAPIKEY from '../openaiApiKey'
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -33,6 +34,7 @@ const Chat = () => {
     const updatedMessages = [...messages,newMessage];
     setMessages(updatedMessages);
     setIsLoading(true);
+    // console.log(process.env.REACT_APP_URL);
     await getResponseFromChatGPT(updatedMessages);
   };
 
@@ -52,7 +54,7 @@ const Chat = () => {
     await fetch("https://api.openai.com/v1/chat/completions",{
         method: "POST",
         headers: {
-            "Authorization": `Bearer ${process.env.REACT_APP_API_KEY}` ,
+            "Authorization": `Bearer ${OpenAIAPIKEY}` ,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
