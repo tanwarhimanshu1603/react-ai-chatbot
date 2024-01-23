@@ -64,6 +64,7 @@ const Chat = () => {
         })
     }).then((data) => data.json())
     .then((data) => {
+        console.log(data);
         setMessages([...ChatMessages, {
             from: "bot",
             text: data.choices[0].message.content
